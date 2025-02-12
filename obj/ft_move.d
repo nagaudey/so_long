@@ -1,0 +1,7 @@
+obj/ft_move.o: ft_move.c so_long.h libft/all.h minilibx-linux/mlx.h
+
+so_long.h:
+
+libft/all.h:
+
+minilibx-linux/mlx.h:

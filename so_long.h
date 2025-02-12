@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/10 22:10:14 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/12 01:32:05 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ typedef struct s_img
 {
 	void		*mlx_img;
 	char		*addr;
-	int			bpp;
-	int			line_len;
-	int			endian;
 	int			x;
 	int			y;
 	void		*floor;
@@ -38,6 +35,8 @@ typedef struct s_img
 	void		*wall2;
 	void		*collect;
 	void		*player;
+	char		form;
+	int			odd;
 	void		*exit;
 }				t_img;
 
@@ -53,6 +52,7 @@ typedef struct s_content
 	int			count_p;
 	int			count_e;
 	int			count_c;
+	int			count_m;
 	int			error;
 }				t_content;
 
@@ -66,23 +66,26 @@ typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	int			width;
-	int			height;
 	char		**map;
 	t_content	content;
 	t_img		img;
 	t_position	pos;
-	int			count;
 }				t_data;
 
 void			ft_set_content(t_data *data);
-void			ft_put_player(t_data data, char form);
-void			ft_put_background(t_data data, char form);
-void			ft_put_object(t_data data, char form);
-void			ft_put_wall(t_data data, char form);
+void			ft_put_player2(t_data *data);
+void			ft_put_background(t_data *data, char form);
+void			ft_put_object(t_data *data, char form);
+void			ft_put_wall(t_data *data, char form);
 void			*ft_error(char *str);
 char			**ft_check_map(char **str, t_data *data);
 int				ft_check_close(t_data *data);
 void			ft_print_map(t_data *data);
+int				ft_close(t_data *data);
+void			ft_up(t_data *data);
+void			ft_down(t_data *data);
+void			ft_left(t_data *data);
+void			ft_right(t_data *data);
+int				ft_render(t_data *data);
 
 #endif

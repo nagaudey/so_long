@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/11 01:59:24 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/12 01:30:38 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,9 @@ void	ft_print_wall(t_data *data)
 		while (data->map[data->img.y][data->img.x])
 		{
 			if (data->img.y == 0 || data->img.y == data->content.count_y - 1)
-				ft_put_wall(*data, 'W');
+				ft_put_wall(data, 'W');
 			if (data->img.x == 0 || data->img.x == data->content.count_x - 1)
-				ft_put_wall(*data, 'W');
+				ft_put_wall(data, 'W');
 			data->img.x++;
 		}
 		data->img.y++;
@@ -161,26 +161,27 @@ void	ft_print_map(t_data *data)
 		while (data->map[data->img.y][data->img.x + 1])
 		{
 			if (data->map[data->img.y][data->img.x] == '1')
-				ft_put_background(*data, 'W');
+				ft_put_background(data, 'W');
 			else if (data->map[data->img.y][data->img.x] == '0')
-				ft_put_background(*data, 'F');
+				ft_put_background(data, 'F');
 			else if (data->map[data->img.y][data->img.x] == 'C')
-				ft_put_object(*data, 'C');
+				ft_put_object(data, 'C');
 			else if (data->map[data->img.y][data->img.x] == 'E')
-				ft_put_object(*data, 'E');
+				ft_put_object(data, 'E');
 			else if (data->map[data->img.y][data->img.x] == 'P')
-				ft_put_player(*data, 'S');
+			{
+				data->pos.x = data->img.x;
+				data->pos.y = data->img.y;
+				ft_put_player2(data);
+			}
 			data->img.x++;
 		}
 		data->img.y++;
 	}
 }
 
-void	print_strings(char **strings)
+int ft_render(t_data *data)
 {
-	while (*strings)
-	{
-		printf("%s\n", *strings);
-		strings++;
-	}
+	ft_print_map(data);
+	return (0);
 }

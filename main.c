@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:26:51 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/11 01:56:22 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/11 23:29:30 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,21 @@
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->img.player);
-		mlx_destroy_image(data->mlx_ptr, data->img.wall);
-		mlx_destroy_image(data->mlx_ptr, data->img.floor);
-		mlx_destroy_image(data->mlx_ptr, data->img.exit);
-		mlx_destroy_image(data->mlx_ptr, data->img.collect);
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		mlx_destroy_display(data->mlx_ptr);
-		free(data->mlx_ptr);
-		exit(0);
-	}
-	printf("Keypress: %d\n", keysym);
+		ft_close(data);
+	if (keysym == XK_w)
+		ft_up(data);
+	if (keysym == XK_s)
+		ft_down(data);
+	if (keysym == XK_a)
+		ft_left(data);
+	if (keysym == XK_d)
+		ft_right(data);
+	ft_printf("Number of movements: %d\n", data->content.count_m);
 	return (0);
 }
 
 int destroy(t_data *data)
 {
-	mlx_destroy_image(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
@@ -45,7 +42,7 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	ac = 0;
+	(void)ac;
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (MLX_ERROR);
@@ -61,7 +58,7 @@ int	main(int ac, char **av)
 		free(data.mlx_ptr);
 		return (MLX_ERROR);
 	}
-	ft_print_map(&data);
+	mlx_loop_hook(data.mlx_ptr, &ft_render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
     mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &destroy, &data);
 	mlx_loop(data.mlx_ptr);

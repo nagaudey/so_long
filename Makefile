@@ -6,12 +6,13 @@
 #    By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 18:18:42 by nagaudey          #+#    #+#              #
-#    Updated: 2025/02/10 20:32:25 by nagaudey         ###   ########.fr        #
+#    Updated: 2025/02/11 17:00:00 by nagaudey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CFLAGS = -Wall -Wextra -Werror -MMD -MP -g3
+CFLAGS = -Wall -Wextra -Werror -MMD -MP -g3 -fPIC
+LDFLAGS = -fPIE
 libft = ./libft
 minilibx = ./minilibx-linux
 mlx = $(minilibx)/libmlx_Linux.a
@@ -19,11 +20,11 @@ CC = cc
 
 # Source files with their full paths
 SRC = ft_map.c libft/get_next_line/get_next_line.c libft/ft_split.c libft/ft_strchr2.c \
-		ft_error.c ft_set.c main.c
+		ft_error.c ft_set.c main.c ft_move.c ft_close.c
 
 # Create object files paths while preserving directory structure
 OBJ_DIR = obj
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 DEPS = $(OBJ:.o=.d)
 
 all: $(OBJ_DIR) libft $(NAME)
@@ -36,7 +37,7 @@ $(OBJ_DIR)/%.o: %.c libft/libft.a minilibx-linux/libmlx_Linux.a so_long.h
 -include $(DEPS)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L$(libft) -lft $(mlx) -L$(minilibx) -lXext -lX11 -lmlx
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(OBJ) -L$(libft) -lft $(mlx) -L$(minilibx) -lXext -lX11 -lmlx
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
