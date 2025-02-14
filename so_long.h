@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/12 01:32:05 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/14 01:54:41 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include <X11/keysym.h>
 # include <mlx.h>
 
-# define WINDOWS_WIDTH 1920
-# define WINDOWS_HEIGHT 800
 # define MLX_ERROR 1
 # define IMG_WIDTH 64
 # define IMG_HEIGHT 64
+#define MAX_DISPLAY_WIDTH 3840
+#define MAX_DISPLAY_HEIGHT 2160
 
 typedef struct s_img
 {
@@ -77,7 +77,7 @@ void			ft_put_player2(t_data *data);
 void			ft_put_background(t_data *data, char form);
 void			ft_put_object(t_data *data, char form);
 void			ft_put_wall(t_data *data, char form);
-void			*ft_error(char *str);
+void			*ft_error(t_data *data, char *str);
 char			**ft_check_map(char **str, t_data *data);
 int				ft_check_close(t_data *data);
 void			ft_print_map(t_data *data);
@@ -87,5 +87,6 @@ void			ft_down(t_data *data);
 void			ft_left(t_data *data);
 void			ft_right(t_data *data);
 int				ft_render(t_data *data);
+char			**ft_cutmap(t_data *data);
 
 #endif

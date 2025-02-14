@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:26:51 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/11 23:29:30 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:30:10 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int	main(int ac, char **av)
 		return (MLX_ERROR);
 	data.map = ft_check_map(av, &data);
 	if (!data.map)
-		return (1);
-	if (ft_check_close(&data) == 28)
 		return (1);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, data.content.count_x * 64, data.content.count_y * 64,
 			"so_long");

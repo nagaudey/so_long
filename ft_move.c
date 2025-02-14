@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 01:50:20 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/12 01:55:13 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:47:20 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,24 @@ void	ft_up(t_data *data)
 		data->img.form = 'G';
 	if (data->map[data->pos.y - 1][data->pos.x] != '1')
 	{
-		if (data->img.odd % 2 != 0)
-			data->img.form = 'R';
-		else
-			data->img.form = 'L';
-		data->img.odd++;
-		if (data->map[data->pos.y - 1][data->pos.x] == 'E'
-			&& ft_check_collect(data) == 0)
+		if (data->map[data->pos.y - 1][data->pos.x] != 'E')
 		{
-			ft_printf("Felicitation vous avez gagne en : %d coup !\n",
+			if (data->img.odd % 2 != 0)
+				data->img.form = 'R';
+			else
+				data->img.form = 'L';
+			data->img.odd++;
+			data->map[data->pos.y][data->pos.x] = '0';
+			data->pos.y--;
+			data->map[data->pos.y][data->pos.x] = 'P';
+			data->content.count_m++;
+		}
+		else if (ft_check_collect(data) == 0)
+		{
+			ft_printf("Congratulations, you have won in: %d moves!\n",
 				data->content.count_m + 1);
 			ft_close(data);
 		}
-		data->map[data->pos.y][data->pos.x] = '0';
-		data->pos.y--;
-		data->map[data->pos.y][data->pos.x] = 'P';
-		data->content.count_m++;
 	}
 }
 
@@ -69,22 +71,25 @@ void	ft_down(t_data *data)
 		data->img.form = 'D';
 	if (data->map[data->pos.y + 1][data->pos.x] != '1')
 	{
-		if (data->img.odd % 2 != 0)
-			data->img.form = '2';
-		else
-			data->img.form = '1';
-		data->img.odd++;
-		if (data->map[data->pos.y + 1][data->pos.x] == 'E'
+		if (data->map[data->pos.y + 1][data->pos.x] != 'E')
+		{
+			if (data->img.odd % 2 != 0)
+				data->img.form = '2';
+			else
+				data->img.form = '1';
+			data->img.odd++;
+			data->map[data->pos.y][data->pos.x] = '0';
+			data->pos.y++;
+			data->map[data->pos.y][data->pos.x] = 'P';
+			data->content.count_m++;
+		}
+		else if (data->map[data->pos.y + 1][data->pos.x] == 'E'
 			&& ft_check_collect(data) == 0)
 		{
-			ft_printf("Felicitation vous avez gagne en : %d coup !\n",
+			ft_printf("Congratulations, you have won in: %d moves!\n",
 				data->content.count_m + 1);
 			ft_close(data);
 		}
-		data->map[data->pos.y][data->pos.x] = '0';
-		data->pos.y++;
-		data->map[data->pos.y][data->pos.x] = 'P';
-		data->content.count_m++;
 	}
 }
 
@@ -94,22 +99,25 @@ void	ft_left(t_data *data)
 		data->img.form = 'D';
 	if (data->map[data->pos.y][data->pos.x - 1] != '1')
 	{
-		if (data->img.odd % 2 != 0)
-			data->img.form = '1';
-		else
-			data->img.form = 'L';
-		data->img.odd++;
-		if (data->map[data->pos.y][data->pos.x - 1] == 'E'
+		if (data->map[data->pos.y][data->pos.x - 1] != 'E')
+		{
+			if (data->img.odd % 2 != 0)
+				data->img.form = '1';
+			else
+				data->img.form = 'L';
+			data->img.odd++;
+			data->map[data->pos.y][data->pos.x] = '0';
+			data->pos.x--;
+			data->map[data->pos.y][data->pos.x] = 'P';
+			data->content.count_m++;
+		}
+		else if (data->map[data->pos.y][data->pos.x - 1] == 'E'
 			&& ft_check_collect(data) == 0)
 		{
-			ft_printf("Felicitation vous avez gagne en : %d coup !\n",
+			ft_printf("Congratulations, you have won in: %d moves!\n",
 				data->content.count_m + 1);
 			ft_close(data);
 		}
-		data->map[data->pos.y][data->pos.x] = '0';
-		data->pos.x--;
-		data->map[data->pos.y][data->pos.x] = 'P';
-		data->content.count_m++;
 	}
 }
 
@@ -119,21 +127,24 @@ void	ft_right(t_data *data)
 		data->img.form = 'G';
 	if (data->map[data->pos.y][data->pos.x + 1] != '1')
 	{
-		if (data->img.odd % 2 != 0)
-			data->img.form = '2';
-		else
-			data->img.form = 'R';
-		data->img.odd++;
-		if (data->map[data->pos.y][data->pos.x + 1] == 'E'
+		if (data->map[data->pos.y][data->pos.x + 1] != 'E')
+		{
+			if (data->img.odd % 2 != 0)
+				data->img.form = '2';
+			else
+				data->img.form = 'R';
+			data->img.odd++;
+			data->map[data->pos.y][data->pos.x] = '0';
+			data->pos.x++;
+			data->map[data->pos.y][data->pos.x] = 'P';
+			data->content.count_m++;
+		}
+		else if (data->map[data->pos.y][data->pos.x + 1] == 'E'
 			&& ft_check_collect(data) == 0)
 		{
-			ft_printf("Felicitation vous avez gagne en : %d coup !\n",
+			ft_printf("Congratulations, you have won in: %d moves!\n",
 				data->content.count_m + 1);
 			ft_close(data);
 		}
-		data->map[data->pos.y][data->pos.x] = '0';
-		data->pos.x++;
-		data->map[data->pos.y][data->pos.x] = 'P';
-		data->content.count_m++;
 	}
 }
