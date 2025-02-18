@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/14 02:12:37 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:14:06 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	**ft_get_map(int fd, t_data *data)
 
 	buff = ft_strdup("");
 	if (!buff)
-		return (ft_error(data, "Error\nMemory allocation failed\n"), NULL);
+		return (end(data, "Error\nMemory allocation failed\n"), NULL);
 	line_map = get_next_line(fd);
 	if (!line_map)
-		return (free(buff), ft_error(data, "Error\nWrong lecture map\n"), NULL);
+		return (free(buff), end(data, "Error\nWrong lecture map\n"), NULL);
 	while (ft_strlen(line_map) > 0)
 	{
 		tmp_buff = buff;
@@ -98,77 +98,24 @@ char	**ft_check_map(char **str, t_data *data)
 	int	fd;
 
 	if (!str || !str[1])
-		return (ft_error(data, "Error\nNo map file provided\n"));
+		return (end(data, "Error\nNo map file provided\n"));
 	data->map = NULL;
 	if (ft_strchr2(str[1], ".ber") == 0)
-		return (ft_error(data, "Error\nNo correct format map founded\n"));
+		return (end(data, "Error\nNo correct format map founded\n"));
 	fd = open(str[1], O_RDONLY);
 	if (fd < 0)
-		return (ft_error(data, "Error\nFailed to open file\n"));
+		return (end(data, "Error\nFailed to open file\n"));
 	data->map = ft_parse_map(fd, data);
 	if (data->content.count_x * 64 > 3840 || data->content.count_y * 64 > 2160)
-		ft_cutmap(data);
+		data->map = ft_cutmap(data);
 	if ((data->content.count_c == 0 || data->content.count_e != 1
 			|| data->content.count_p != 1) && data->map != NULL)
-		return (ft_error(data,
-				"Error\nNeed 1 Player/Exit and at least 1 Object\n"));
+		return (end(data, "Error\nNeed 1 Player/Exit and at least 1 Object\n"));
 	if (data->content.error == 1)
-		return (ft_error(data,
-				"Error\nThe map must be Square or Rectangular\n"));
+		return (end(data, "Error\nThe map must be Square or Rectangular\n"));
+	if (ft_check_path(data) == 1)
+		return (end(data, "Error\nThe map cannot be finished\n"));
 	if (ft_check_close(data) == 1)
-		return (ft_error(data,
-				"Error\nThe map must be close\n"));
+		return (end(data, "Error\nThe map must be close\n"));
 	return (data->map);
-}
-
-void	ft_print_wall(t_data *data)
-{
-	data->img.y = 0;
-	while (data->map[data->img.y])
-	{
-		data->img.x = 0;
-		while (data->map[data->img.y][data->img.x])
-		{
-			if (data->img.y == 0 || data->img.y == data->content.count_y - 1)
-				ft_put_wall(data, 'W');
-			if (data->img.x == 0 || data->img.x == data->content.count_x - 1)
-				ft_put_wall(data, 'W');
-			data->img.x++;
-		}
-		data->img.y++;
-	}
-}
-void	ft_print_map(t_data *data)
-{
-	ft_print_wall(data);
-	data->img.y = 1;
-	while (data->map[data->img.y + 1] != NULL)
-	{
-		data->img.x = 1;
-		while (data->map[data->img.y][data->img.x + 1])
-		{
-			if (data->map[data->img.y][data->img.x] == '1')
-				ft_put_background(data, 'W');
-			else if (data->map[data->img.y][data->img.x] == '0')
-				ft_put_background(data, 'F');
-			else if (data->map[data->img.y][data->img.x] == 'C')
-				ft_put_object(data, 'C');
-			else if (data->map[data->img.y][data->img.x] == 'E')
-				ft_put_object(data, 'E');
-			else if (data->map[data->img.y][data->img.x] == 'P')
-			{
-				data->pos.x = data->img.x;
-				data->pos.y = data->img.y;
-				ft_put_player2(data);
-			}
-			data->img.x++;
-		}
-		data->img.y++;
-	}
-}
-
-int	ft_render(t_data *data)
-{
-	ft_print_map(data);
-	return (0);
 }

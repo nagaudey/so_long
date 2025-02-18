@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:09 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/12 01:31:41 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:15:21 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	ft_put_player2(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->img.player);
 }
 
-
 void	ft_put_background(t_data *data, char form)
 {
 	int	img_height;
@@ -106,32 +105,13 @@ void	ft_put_object(t_data *data, char form)
 	}
 	else if (form == 'E')
 	{
-		data->img.exit = mlx_xpm_file_to_image(data->mlx_ptr, "textures/door.xpm",
-				&img_width, &img_height);
+		data->img.exit = mlx_xpm_file_to_image(data->mlx_ptr,
+				"textures/door.xpm", &img_width, &img_height);
 		if (!data->img.exit)
 			printf("Error\nFailed to load exit image\n");
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.exit,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
 		mlx_destroy_image(data->mlx_ptr, data->img.exit);
-	}
-}
-
-void	ft_put_wall(t_data *data, char form)
-{
-	int	img_height;
-	int	img_width;
-
-	img_height = IMG_HEIGHT;
-	img_width = IMG_WIDTH;
-	if (form == 'W')
-	{
-		data->img.wall2 = mlx_xpm_file_to_image(data->mlx_ptr,
-				"textures/water.xpm", &img_width, &img_height);
-		if (!data->img.wall2)
-			printf("Error\nFailed to load wall image\n");
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.wall2,
-			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-		mlx_destroy_image(data->mlx_ptr, data->img.wall2);
 	}
 }
 

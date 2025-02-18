@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:26:51 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/13 21:30:10 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:08:17 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	handle_keypress(int keysym, t_data *data)
 	return (0);
 }
 
-int destroy(t_data *data)
+int	destroy(t_data *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
@@ -49,8 +49,8 @@ int	main(int ac, char **av)
 	data.map = ft_check_map(av, &data);
 	if (!data.map)
 		return (1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, data.content.count_x * 64, data.content.count_y * 64,
-			"so_long");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, data.content.count_x * 64,
+			data.content.count_y * 64, "so_long");
 	if (!data.win_ptr)
 	{
 		free(data.mlx_ptr);
@@ -58,7 +58,6 @@ int	main(int ac, char **av)
 	}
 	mlx_loop_hook(data.mlx_ptr, &ft_render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
-    mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &destroy, &data);
+	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &destroy, &data);
 	mlx_loop(data.mlx_ptr);
 }
-

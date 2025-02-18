@@ -6,7 +6,7 @@
 #    By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 18:18:42 by nagaudey          #+#    #+#              #
-#    Updated: 2025/02/14 00:47:28 by nagaudey         ###   ########.fr        #
+#    Updated: 2025/02/18 20:15:52 by nagaudey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ mlx = $(minilibx)/libmlx_Linux.a
 CC = cc
 
 # Source files with their full paths
-SRC = ft_map.c libft/get_next_line/get_next_line.c libft/ft_split.c libft/ft_strchr2.c \
-		ft_error.c ft_set.c main.c ft_move.c ft_close.c ft_cutmap.c
+SRC = ft_map.c libft/get_next_line/get_next_line.c libft/ft_split.c libft/ft_strchr2.c ft_render.c \
+		end.c ft_set.c main.c ft_move.c ft_close.c ft_cutmap.c ft_check_path.c ft_clone_map.c
 
 # Create object files paths while preserving directory structure
 OBJ_DIR = obj

@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/14 01:54:41 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:16:42 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define MLX_ERROR 1
 # define IMG_WIDTH 64
 # define IMG_HEIGHT 64
-#define MAX_DISPLAY_WIDTH 3840
-#define MAX_DISPLAY_HEIGHT 2160
+# define MAX_DISPLAY_WIDTH 3840
+# define MAX_DISPLAY_HEIGHT 2160
 
 typedef struct s_img
 {
@@ -67,6 +67,8 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*win_ptr;
 	char		**map;
+	char		**map_cpy;
+	char		**temp;
 	t_content	content;
 	t_img		img;
 	t_position	pos;
@@ -76,11 +78,9 @@ void			ft_set_content(t_data *data);
 void			ft_put_player2(t_data *data);
 void			ft_put_background(t_data *data, char form);
 void			ft_put_object(t_data *data, char form);
-void			ft_put_wall(t_data *data, char form);
-void			*ft_error(t_data *data, char *str);
+void			*end(t_data *data, char *str);
 char			**ft_check_map(char **str, t_data *data);
 int				ft_check_close(t_data *data);
-void			ft_print_map(t_data *data);
 int				ft_close(t_data *data);
 void			ft_up(t_data *data);
 void			ft_down(t_data *data);
@@ -88,5 +88,8 @@ void			ft_left(t_data *data);
 void			ft_right(t_data *data);
 int				ft_render(t_data *data);
 char			**ft_cutmap(t_data *data);
+void			ft_free2str(char **map);
+int				ft_check_path(t_data *data);
+char			**ft_clone_map(t_data *data);
 
 #endif
