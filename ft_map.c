@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/18 20:14:06 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/19 19:43:56 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char	**ft_check_map(char **str, t_data *data)
 {
 	int	fd;
 
+	mlx_get_screen_size(data->mlx_ptr, &data->width, &data->height);
 	if (!str || !str[1])
 		return (end(data, "Error\nNo map file provided\n"));
 	data->map = NULL;
@@ -106,7 +107,8 @@ char	**ft_check_map(char **str, t_data *data)
 	if (fd < 0)
 		return (end(data, "Error\nFailed to open file\n"));
 	data->map = ft_parse_map(fd, data);
-	if (data->content.count_x * 64 > 3840 || data->content.count_y * 64 > 2160)
+	if (data->content.count_x * 64 > data->height || data->content.count_y
+		* 64 > data->width)
 		data->map = ft_cutmap(data);
 	if ((data->content.count_c == 0 || data->content.count_e != 1
 			|| data->content.count_p != 1) && data->map != NULL)

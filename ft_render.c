@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:13:38 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/18 20:15:14 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/19 21:36:05 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,10 @@
 
 void	ft_put_wall(t_data *data, char form)
 {
-	int	img_height;
-	int	img_width;
-
-	img_height = IMG_HEIGHT;
-	img_width = IMG_WIDTH;
 	if (form == 'W')
 	{
-		data->img.wall2 = mlx_xpm_file_to_image(data->mlx_ptr,
-				"textures/water.xpm", &img_width, &img_height);
-		if (!data->img.wall2)
-			printf("Error\nFailed to load wall image\n");
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.wall2,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-		mlx_destroy_image(data->mlx_ptr, data->img.wall2);
 	}
 }
 

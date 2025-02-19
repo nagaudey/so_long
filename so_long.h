@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/18 20:16:42 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/19 21:49:32 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # define MLX_ERROR 1
 # define IMG_WIDTH 64
 # define IMG_HEIGHT 64
-# define MAX_DISPLAY_WIDTH 3840
-# define MAX_DISPLAY_HEIGHT 2160
 
 typedef struct s_img
 {
@@ -35,6 +33,13 @@ typedef struct s_img
 	void		*wall2;
 	void		*collect;
 	void		*player;
+	void		*player_R;
+	void		*player_L;
+	void		*player_S;
+	void		*player_D;
+	void		*player_G;
+	void		*player_1;
+	void		*player_2;
 	char		form;
 	int			odd;
 	void		*exit;
@@ -68,7 +73,8 @@ typedef struct s_data
 	void		*win_ptr;
 	char		**map;
 	char		**map_cpy;
-	char		**temp;
+	int			width;
+	int			height;
 	t_content	content;
 	t_img		img;
 	t_position	pos;
@@ -91,5 +97,6 @@ char			**ft_cutmap(t_data *data);
 void			ft_free2str(char **map);
 int				ft_check_path(t_data *data);
 char			**ft_clone_map(t_data *data);
+void			ft_set_img2(t_data *data);
 
 #endif

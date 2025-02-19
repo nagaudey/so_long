@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:22:39 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/18 20:10:39 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:00:58 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define MAX_DISPLAY_WIDTH 3840
-#define MAX_DISPLAY_HEIGHT 2160
 
 void	ft_free2str(char **map)
 {
@@ -49,10 +46,10 @@ static void	ft_freemap(t_data *data)
 
 void	ft_display(t_data *data)
 {
-	if (data->content.count_x * 64 > MAX_DISPLAY_WIDTH)
-		data->content.count_x = MAX_DISPLAY_WIDTH / 64;
-	if (data->content.count_y * 64 > MAX_DISPLAY_HEIGHT)
-		data->content.count_y = MAX_DISPLAY_HEIGHT / 64;
+	if (data->content.count_x * 64 > data->width)
+		data->content.count_x = data->width / 64;
+	if (data->content.count_y * 64 > data->height)
+		data->content.count_y = data->height / 64;
 	printf("the map is too big, resized: %d x %d.\n", data->content.count_x,
 		data->content.count_y);
 }
