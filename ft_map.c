@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/19 19:43:56 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:39:58 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ char	**ft_check_map(char **str, t_data *data)
 	if (fd < 0)
 		return (end(data, "Error\nFailed to open file\n"));
 	data->map = ft_parse_map(fd, data);
-	if (data->content.count_x * 64 > data->height || data->content.count_y
-		* 64 > data->width)
+	if (data->content.count_x * 64 > data->width || data->content.count_y
+		* 64 > data->height)
 		data->map = ft_cutmap(data);
 	if ((data->content.count_c == 0 || data->content.count_e != 1
 			|| data->content.count_p != 1) && data->map != NULL)

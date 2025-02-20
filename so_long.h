@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/19 21:49:32 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:32:41 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_img
 	void		*wall;
 	void		*wall2;
 	void		*collect;
-	void		*player;
 	void		*player_R;
 	void		*player_L;
 	void		*player_S;
@@ -98,5 +97,7 @@ void			ft_free2str(char **map);
 int				ft_check_path(t_data *data);
 char			**ft_clone_map(t_data *data);
 void			ft_set_img2(t_data *data);
+void			ft_free2str(char **map);
+void			ft_freemap(t_data *data);
 
 #endif
