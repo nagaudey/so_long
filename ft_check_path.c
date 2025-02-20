@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:57:57 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 20:00:02 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:32:44 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,18 +96,16 @@ int	ft_check_path(t_data *data)
 	ft_pos_player(data);
 	ft_check_valid(data->pos.x, data->pos.y, data);
 	if (data->content.count_c != 0 || data->content.count_e != 0)
-	{
-		if (data->map_cpy)
-		{
-			while (data->map_cpy[i] != NULL)
-			{
-				free(data->map_cpy[i]);
-				i++;
-			}
-			free(data->map_cpy);
-			data->map_cpy = NULL;
-		}
 		return (1);
+	if (data->map_cpy)
+	{
+		while (data->map_cpy[i] != NULL)
+		{
+			free(data->map_cpy[i]);
+			i++;
+		}
+		free(data->map_cpy);
+		data->map_cpy = NULL;
 	}
 	return (0);
 }
