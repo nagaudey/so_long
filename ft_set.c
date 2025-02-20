@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:10:42 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/19 22:13:51 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:22:06 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_set_content(t_data *data)
 	data->content.count_p = 0;
 	data->content.count_e = 0;
 	data->content.count_c = 0;
+	data->content.count_m = 0;
 	data->content.error = 0;
 	data->img.odd = 0;
 	data->img.form = 'S';
