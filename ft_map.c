@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 17:39:58 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:09:18 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,35 @@ char	**ft_get_map(int fd, t_data *data)
 	return (data->map);
 }
 
+int	ft_check_characters(t_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (data->map[y])
+	{
+		x = 0;
+		while (data->map[y][x])
+		{
+			if (data->map[y][x] == 'C')
+				data->content.count_c++;
+			else if (data->map[y][x] == 'E')
+				data->content.count_e++;
+			else if (data->map[y][x] == 'P')
+				data->content.count_p++;
+			else if (data->map[y][x] != '1' && data->map[y][x] != '0')
+				return (1);
+			x++;
+		}
+		y++;
+	}
+	if (data->content.count_c == 0 || data->content.count_e != 1
+		|| data->content.count_p != 1)
+		return (1);
+	return (0);
+}
+
 char	**ft_parse_map(int fd, t_data *data)
 {
 	int	x;
@@ -53,15 +82,7 @@ char	**ft_parse_map(int fd, t_data *data)
 	{
 		x = 0;
 		while (data->map[data->content.count_y][x])
-		{
-			if (data->map[data->content.count_y][x] == 'C')
-				data->content.count_c++;
-			else if (data->map[data->content.count_y][x] == 'E')
-				data->content.count_e++;
-			else if (data->map[data->content.count_y][x] == 'P')
-				data->content.count_p++;
 			x++;
-		}
 		if (data->content.count_x != x)
 			data->content.error = 1;
 		data->content.count_y++;
@@ -110,11 +131,10 @@ char	**ft_check_map(char **str, t_data *data)
 	if (data->content.count_x * 64 > data->width || data->content.count_y
 		* 64 > data->height)
 		data->map = ft_cutmap(data);
-	if ((data->content.count_c == 0 || data->content.count_e != 1
-			|| data->content.count_p != 1) && data->map != NULL)
-		return (end(data, "Error\nNeed 1 Player/Exit and at least 1 Object\n"));
 	if (data->content.error == 1)
 		return (end(data, "Error\nThe map must be Square or Rectangular\n"));
+	if ((ft_check_characters(data)) == 1)
+		return (end(data, "Error\nThe characters in the map are incorrect\n"));
 	if (ft_check_path(data) == 1)
 		return (end(data, "Error\nThe map cannot be finished\n"));
 	if (ft_check_close(data) == 1)

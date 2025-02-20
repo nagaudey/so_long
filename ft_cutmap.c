@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:22:39 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 18:19:13 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:08:58 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ void	ft_display(t_data *data)
 		data->content.count_x = data->width / 64;
 	if (data->content.count_y * 64 > data->height)
 		data->content.count_y = data->height / 64;
-	printf("the map is too big, resized: %d x %d.\n",
-		data->content.count_x, data->content.count_y);
+	printf("the map is too big, resized: %d x %d.\n", data->content.count_x,
+		data->content.count_y);
 }
-
 
 void	ft_init_map(t_data *data, char **new_map)
 {
@@ -34,6 +33,7 @@ void	ft_init_map(t_data *data, char **new_map)
 		i++;
 	}
 }
+
 char	**ft_precutmap(t_data *data, int to_copy)
 {
 	int		i;
@@ -65,8 +65,8 @@ char	**ft_precutmap(t_data *data, int to_copy)
 
 void	ft_free_newmap(t_data *data, char **new_map)
 {
-		ft_free2str(new_map);
-		ft_freemap(data);
+	ft_free2str(new_map);
+	ft_freemap(data);
 }
 
 char	**ft_cutmap(t_data *data)
@@ -95,4 +95,3 @@ char	**ft_cutmap(t_data *data)
 	ft_freemap(data);
 	return (new_map);
 }
-

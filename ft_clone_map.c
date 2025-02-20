@@ -6,13 +6,13 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:52:30 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 18:03:01 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:08:18 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_countmap(t_data *data)
+void	ft_countmap(t_data *data)
 {
 	data->content.count_x = ft_strlen(data->map[0]);
 	data->content.count_y = 0;

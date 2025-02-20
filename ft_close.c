@@ -6,19 +6,18 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:36:23 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 18:32:59 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:08:34 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	ft_free2str(char **map)
 {
 	int	i;
 
 	if (!map)
-	return ;
+		return ;
 	i = 0;
 	while (map[i])
 	{
@@ -33,7 +32,7 @@ void	ft_freemap(t_data *data)
 	int	i;
 
 	if (!data->map)
-	return ;
+		return ;
 	i = 0;
 	while (data->map[i])
 	{

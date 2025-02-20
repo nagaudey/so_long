@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:57:57 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/18 20:11:37 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/20 20:00:02 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_pos_player(t_data *data)
 	}
 }
 
-char	**ft_parse_newmap(t_data *data)
+char	**ft_check_newmap(t_data *data)
 {
 	int	x;
 
@@ -91,7 +91,7 @@ int	ft_check_path(t_data *data)
 	int	i;
 
 	i = 0;
-	data->map = ft_parse_newmap(data);
+	data->map = ft_check_newmap(data);
 	data->map_cpy = ft_clone_map(data);
 	ft_pos_player(data);
 	ft_check_valid(data->pos.x, data->pos.y, data);
