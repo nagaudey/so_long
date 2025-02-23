@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 21:22:39 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 20:08:58 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:07:24 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**ft_precutmap(t_data *data, int to_copy)
 	{
 		new_map[i] = malloc(sizeof(char) * (data->content.count_x + 2));
 		if (!new_map[i])
-			return (ft_free2str(new_map), NULL);
+			return (ft_free2str(new_map));
 		j = 0;
 		while (j < data->content.count_x && data->map[i][j + 1] != '\0')
 		{
@@ -63,10 +63,11 @@ char	**ft_precutmap(t_data *data, int to_copy)
 	return (new_map);
 }
 
-void	ft_free_newmap(t_data *data, char **new_map)
+char	**ft_free_newmap(t_data *data, char **new_map)
 {
 	ft_free2str(new_map);
 	ft_freemap(data);
+	return (NULL);
 }
 
 char	**ft_cutmap(t_data *data)
@@ -79,10 +80,10 @@ char	**ft_cutmap(t_data *data)
 	to_copy = data->content.count_y - 1;
 	new_map = ft_precutmap(data, to_copy);
 	if (!new_map)
-		return (ft_freemap(data), NULL);
+		return (ft_freemap(data));
 	new_map[to_copy] = malloc(sizeof(char) * (data->content.count_x + 2));
 	if (!new_map[to_copy])
-		return (ft_free_newmap(data, new_map), NULL);
+		return (ft_free_newmap(data, new_map));
 	j = 0;
 	while (j < data->content.count_x)
 	{

@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 18:32:41 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:45:02 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,20 @@ void			ft_put_player2(t_data *data);
 void			ft_put_background(t_data *data, char form);
 void			ft_put_object(t_data *data, char form);
 void			*end(t_data *data, char *str);
+void			*end2(t_data *data, char *str, char *buff);
 char			**ft_check_map(char **str, t_data *data);
 int				ft_check_close(t_data *data);
 int				ft_close(t_data *data);
+int				ft_close2(t_data *data);
 void			ft_up(t_data *data);
 void			ft_down(t_data *data);
 void			ft_left(t_data *data);
 void			ft_right(t_data *data);
 int				ft_render(t_data *data);
 char			**ft_cutmap(t_data *data);
-void			ft_free2str(char **map);
+char			**ft_free2str(char **map);
 int				ft_check_path(t_data *data);
 char			**ft_clone_map(t_data *data);
 void			ft_set_img2(t_data *data);
-void			ft_free2str(char **map);
-void			ft_freemap(t_data *data);
-
+char			**ft_freemap(t_data *data);
 #endif

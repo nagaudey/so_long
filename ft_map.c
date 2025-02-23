@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 21:24:42 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:15:58 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	**ft_get_map(int fd, t_data *data)
 
 	buff = ft_strdup("");
 	if (!buff)
-		return (end(data, "Error\nMemory allocation failed\n"), NULL);
+		return (end(data, "Error\nMemory allocation failed\n"));
 	line_map = get_next_line(fd);
 	if (!line_map)
-		return (free(buff), end(data, "Error\nWrong lecture map\n"), NULL);
+		return (end2(data, "Error\nWrong lecture map\n", buff));
 	while (ft_strlen(line_map) > 0)
 	{
 		tmp_buff = buff;
@@ -76,6 +76,7 @@ char	**ft_parse_map(int fd, t_data *data)
 
 	data->content.count_y = 0;
 	ft_set_content(data);
+	data->content.count_m = 0;
 	data->map = ft_get_map(fd, data);
 	data->content.count_x = ft_strlen(data->map[data->content.count_y]);
 	while (data->map[data->content.count_y])

@@ -6,18 +6,18 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:36:23 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 20:08:34 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/23 22:08:20 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_free2str(char **map)
+char	**ft_free2str(char **map)
 {
 	int	i;
 
 	if (!map)
-		return ;
+		return (NULL);
 	i = 0;
 	while (map[i])
 	{
@@ -25,14 +25,15 @@ void	ft_free2str(char **map)
 		i++;
 	}
 	free(map);
+	return (NULL);
 }
 
-void	ft_freemap(t_data *data)
+char	**ft_freemap(t_data *data)
 {
 	int	i;
 
 	if (!data->map)
-		return ;
+		return (NULL);
 	i = 0;
 	while (data->map[i])
 	{
@@ -41,6 +42,7 @@ void	ft_freemap(t_data *data)
 	}
 	free(data->map);
 	data->map = NULL;
+	return (NULL);
 }
 
 int	ft_close(t_data *data)
@@ -60,6 +62,14 @@ int	ft_close(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->img.player_1);
 	mlx_destroy_image(data->mlx_ptr, data->img.wall2);
 	mlx_destroy_display(data->mlx_ptr);
+	free(data->mlx_ptr);
+	exit(0);
+	return (0);
+}
+
+int	ft_close2(t_data *data)
+{
+	ft_freemap(data);
 	free(data->mlx_ptr);
 	exit(0);
 	return (0);

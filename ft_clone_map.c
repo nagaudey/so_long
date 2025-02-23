@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:52:30 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 20:08:18 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:27:57 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**ft_clone_map(t_data *data)
 	{
 		new_map[y] = malloc(sizeof(char) * (data->content.count_x + 2));
 		if (!new_map[y])
-			return (ft_free2str(new_map), NULL);
+			return (ft_free2str(new_map));
 		x = 0;
 		while (data->map[y][x])
 		{
@@ -50,3 +50,4 @@ char	**ft_clone_map(t_data *data)
 	new_map[y] = NULL;
 	return (new_map);
 }
+

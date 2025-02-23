@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"*.gitignore": "c",
-		"so_long.h": "c"
+		"so_long.h": "c",
+		"type_traits": "cpp"
 	}
 }

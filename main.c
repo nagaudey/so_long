@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:26:51 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/20 20:10:12 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:52:41 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ int	main(int ac, char **av)
 		return (MLX_ERROR);
 	data.map = ft_check_map(av, &data);
 	if (!data.map)
-		return (free(data.mlx_ptr), 1);
+	{
+		free(data.mlx_ptr);
+		return (1);
+	}
+	ft_set_img2(&data);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, data.content.count_x * 64,
 			data.content.count_y * 64, "so_long");
 	if (!data.win_ptr)
@@ -46,7 +50,6 @@ int	main(int ac, char **av)
 		free(data.mlx_ptr);
 		return (MLX_ERROR);
 	}
-	ft_set_img2(&data);
 	mlx_loop_hook(data.mlx_ptr, &ft_render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &ft_close,
