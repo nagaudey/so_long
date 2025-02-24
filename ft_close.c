@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:36:23 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/23 22:08:20 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 11:47:36 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int	ft_close(t_data *data)
 int	ft_close2(t_data *data)
 {
 	ft_freemap(data);
+	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
-	exit(0);
+	exit(1);
 	return (0);
 }

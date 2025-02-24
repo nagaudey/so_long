@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 01:50:20 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/23 18:24:52 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:33:47 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ void	ft_up(t_data *data)
 		}
 		else if (ft_check_collect(data) == 0)
 		{
-			ft_printf("Congratulations, you have won in: %d moves!\n",
-				data->content.count_m + 1);
-			ft_close(data);
+			data->content.win = 1;
 		}
 	}
 }
@@ -86,9 +84,7 @@ void	ft_down(t_data *data)
 		else if (data->map[data->pos.y + 1][data->pos.x] == 'E'
 			&& ft_check_collect(data) == 0)
 		{
-			ft_printf("Congratulations, you have won in: %d moves!\n",
-				data->content.count_m + 1);
-			ft_close(data);
+			data->content.win = 1;
 		}
 	}
 }
@@ -114,9 +110,7 @@ void	ft_left(t_data *data)
 		else if (data->map[data->pos.y][data->pos.x - 1] == 'E'
 			&& ft_check_collect(data) == 0)
 		{
-			ft_printf("Congratulations, you have won in: %d moves!\n",
-				data->content.count_m + 1);
-			ft_close(data);
+			data->content.win = 1;
 		}
 	}
 }
@@ -142,9 +136,7 @@ void	ft_right(t_data *data)
 		else if (data->map[data->pos.y][data->pos.x + 1] == 'E'
 			&& ft_check_collect(data) == 0)
 		{
-			ft_printf("Congratulations, you have won in: %d moves!\n",
-				data->content.count_m + 1);
-			ft_close(data);
+			data->content.win = 1;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:57:57 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/23 22:04:37 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 12:52:40 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ char	**ft_check_newmap(t_data *data)
 		x = 0;
 		while (data->map[data->content.count_y][x])
 		{
-			if (data->map[data->content.count_y][x] == 'C')
+			if (data->map[data->content.count_y][x] == 'C' || data->map[data->content.count_y][x] == 'E')
 				data->content.count_c++;
-			else if (data->map[data->content.count_y][x] == 'E')
-				data->content.count_e++;
 			else if (data->map[data->content.count_y][x] == 'P')
 				data->content.count_p++;
 			x++;
@@ -85,48 +83,50 @@ char	**ft_check_newmap(t_data *data)
 // 	ft_check_valid(x, y + 1, data);
 // 	ft_check_valid(x, y - 1, data);
 // }
-static void    ft_check_valid(char **dup, int x, int y, int width)
+void    ft_check_valid(int x, int y, t_data *data)
 {
-    int    height;
-
-    height = 0;
-    while (dup[height])
-        height++;
-    if (x < 0 || y < 0 || x >= width || y >= height)
+	data->content.count_l = 0;
+    if (x < 0 || y < 0 || x >= data->content.count_x || y >= data->content.count_y)
         return ;
-    if (dup[y][x] == '1' || dup[y][x] == 'V' || dup[y][x] == 'L'
-        || dup[y][x] == 'E')
-        return ;
-    if (dup[y][x] == 'C')
-        dup[y][x] = 'L';
+    if (data->map_cpy[y][x] == '1' || data->map_cpy[y][x] == 'V' || data->map_cpy[y][x] == 'L'
+        || data->map_cpy[y][x] == 'E')
+		{
+			if (data->map_cpy[y][x] == 'E')
+				data->map_cpy[y][x] = 'L';
+        	return ;
+		}
+    if (data->map_cpy[y][x] == 'C')
+        data->map_cpy[y][x] = 'L';
     else
-        dup[y][x] = 'V';
-    ft_check_valid(dup, x + 1, y, width);
-    ft_check_valid(dup, x - 1, y, width);
-    ft_check_valid(dup, x, y + 1, width);
-    ft_check_valid(dup, x, y - 1, width);
+        data->map_cpy[y][x] = 'V';
+    ft_check_valid(x + 1, y, data);
+    ft_check_valid(x - 1, y, data);
+    ft_check_valid(x, y + 1, data);
+    ft_check_valid(x, y - 1, data);
 }
 
 int	ft_check_path(t_data *data)
 {
 	int	i;
+	int	j;
 
-	i = 0;
+	i = -1;
 	data->map = ft_check_newmap(data);
 	data->map_cpy = ft_clone_map(data);
 	ft_pos_player(data);
-	ft_check_valid(data->map_cpy, data->pos.x, data->pos.y, data->content.count_x);
-	if (data->map_cpy)
+	ft_check_valid(data->pos.x, data->pos.y, data);
+	while(data->map_cpy[++i])
 	{
-		while (data->map_cpy[i] != NULL)
+		j = -1;
+		while (data->map_cpy[i][++j])
 		{
-			free(data->map_cpy[i]);
-			i++;
+			if (data->map_cpy[i][j] == 'L')
+				data->content.count_l++;
 		}
-		free(data->map_cpy);
-		data->map_cpy = NULL;
+
 	}
-	if (data->content.count_c != 0 || data->content.count_e != 0)
+	ft_free2str(data->map_cpy);
+	if (data->content.count_c != data->content.count_l)
 		return (1);
 	return (0);
 }

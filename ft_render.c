@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:13:38 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/19 21:36:05 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:35:27 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ void	ft_print_map(t_data *data)
 
 int	ft_render(t_data *data)
 {
-	ft_print_map(data);
+	if (data->content.win == 0)
+	{
+		ft_print_map(data);
+		ft_print_movements(data);
+	}
+	else if (data->content.lose == 1)
+		ft_lose(data);
+	else if (data->content.win == 1)
+		ft_win(data);
 	return (0);
 }

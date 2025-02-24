@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:26:51 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/23 21:52:41 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:17:01 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		ft_close(data);
-	if (keysym == XK_w)
+	if (keysym == XK_w || keysym == XK_Up)
 		ft_up(data);
-	if (keysym == XK_s)
+	if (keysym == XK_s || keysym == XK_Down)
 		ft_down(data);
-	if (keysym == XK_a)
+	if (keysym == XK_a || keysym == XK_Left)
 		ft_left(data);
-	if (keysym == XK_d)
+	if (keysym == XK_d || keysym == XK_Right)
 		ft_right(data);
-	ft_printf("Number of movements: %d\n", data->content.count_m);
+	if (data->content.print == 0)
+		ft_printf("Number of movements: %d\n", data->content.count_m);
 	return (0);
 }
 
@@ -37,11 +38,6 @@ int	main(int ac, char **av)
 	if (!data.mlx_ptr)
 		return (MLX_ERROR);
 	data.map = ft_check_map(av, &data);
-	if (!data.map)
-	{
-		free(data.mlx_ptr);
-		return (1);
-	}
 	ft_set_img2(&data);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, data.content.count_x * 64,
 			data.content.count_y * 64, "so_long");

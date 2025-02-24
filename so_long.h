@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/23 21:45:02 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:32:52 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,11 @@ typedef struct s_content
 	int			count_e;
 	int			count_c;
 	int			count_m;
+	int			count_l;
 	int			error;
+	int			win;
+	int			lose;
+	int			print;
 }				t_content;
 
 typedef struct s_position
@@ -100,4 +104,10 @@ int				ft_check_path(t_data *data);
 char			**ft_clone_map(t_data *data);
 void			ft_set_img2(t_data *data);
 char			**ft_freemap(t_data *data);
+void			ft_print_movements(t_data *data);
+void			ft_put_wall(t_data *data, char form);
+void			ft_win(t_data *data);
+void			ft_lose(t_data *data);
+int				ft_check_collect(t_data *data);
+
 #endif

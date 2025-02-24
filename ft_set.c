@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:10:42 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/23 21:49:22 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:18:01 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ void	ft_set_content(t_data *data)
 	data->content.count_c = 0;
 	data->content.error = 0;
 	data->img.odd = 0;
+	data->content.win = 0;
+	data->content.lose = 0;
+	data->content.print = 0;
 	data->img.form = 'S';
 }
 
@@ -76,7 +79,7 @@ void	ft_set_img(t_data *data)
 			"textures/star.xpm", &img_width, &img_height);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx_ptr, "textures/rock.xpm",
 			&img_width, &img_height);
-	data->img.floor = mlx_xpm_file_to_image(data->mlx_ptr, "textures/gass.xpm",
+	data->img.floor = mlx_xpm_file_to_image(data->mlx_ptr, "textures/grass.xpm",
 			&img_width, &img_height);
 	data->img.player_R = mlx_xpm_file_to_image(data->mlx_ptr,
 			"textures/fox_right.xpm", &img_width, &img_height);
