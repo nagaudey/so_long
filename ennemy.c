@@ -6,8 +6,10 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 11:58:41 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 11:59:04 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:08:20 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void ft_put_ennemy(t_data *data)

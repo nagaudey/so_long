@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 18:32:52 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:10:21 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_img
 	void		*player_G;
 	void		*player_1;
 	void		*player_2;
+	void		*ennemy_L;
+	void		*ennemy_R;
 	char		form;
 	int			odd;
 	void		*exit;

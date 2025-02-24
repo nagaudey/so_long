@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:36:23 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 11:47:36 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:58:35 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	ft_close(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->img.player_2);
 	mlx_destroy_image(data->mlx_ptr, data->img.player_1);
 	mlx_destroy_image(data->mlx_ptr, data->img.wall2);
+	mlx_destroy_image(data->mlx_ptr, data->img.ennemy_R);
+	mlx_destroy_image(data->mlx_ptr, data->img.ennemy_L);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	exit(0);

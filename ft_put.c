@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:09 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 18:11:03 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:45:04 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,15 @@ void	ft_put_object(t_data *data, char form)
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
 	else if (form == 'E')
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.exit,
+			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
+}
+
+void ft_put_ennemy(t_data *data, char form)
+{
+	if (form == 'L')
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ennemy_L,
+			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
+	else if (form == 'R')
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ennemy_R,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
 }
