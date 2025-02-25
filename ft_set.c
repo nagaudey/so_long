@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:10:42 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 21:57:28 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:28:40 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ void	ft_destroy_images2(t_data *data)
 		mlx_destroy_image(data->mlx_ptr, data->img.player_1);
 	if (data->img.wall2)
 		mlx_destroy_image(data->mlx_ptr, data->img.wall2);
+	if (data->img.flower_1)
+		mlx_destroy_image(data->mlx_ptr, data->img.player_G);
+	if (data->img.flower_2)
+		mlx_destroy_image(data->mlx_ptr, data->img.player_2);
+	if (data->img.flower_3)
+		mlx_destroy_image(data->mlx_ptr, data->img.player_1);
+	if (data->img.flower_4)
+		mlx_destroy_image(data->mlx_ptr, data->img.wall2);
 	end(data, "Error\nFailed to load images\n");
 	ft_close2(data);
 }
@@ -64,9 +72,6 @@ void	ft_set_content(t_data *data)
 	data->content.count_c = 0;
 	data->content.error = 0;
 	data->img.odd = 0;
-	data->content.win = 0;
-	data->content.lose = 0;
-	data->content.print = 0;
 	data->img.form = 'S';
 }
 
@@ -122,4 +127,6 @@ void	ft_set_img2(t_data *data)
 		|| !data->img.player_2 || !data->img.player_1 || !data->img.wall2)
 		ft_destroy_images2(data);
 	ft_set_img(data);
+	ft_set_img3(data);
 }
+

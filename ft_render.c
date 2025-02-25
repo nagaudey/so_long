@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:13:38 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 18:35:27 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:07:58 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,29 @@ void	ft_print_wall(t_data *data)
 	}
 }
 
+void	ft_map_bonus(t_data *data)
+{
+	int	count;
+
+	count = 0;
+	data->img.y = 1;
+	while (data->map[data->img.y + 1])
+	{
+		data->img.x = 1;
+		while (data->map[data->img.y][data->img.x + 1])
+		{
+			if (data->map[data->img.y][data->img.x] == '0')
+			{
+				count++;
+				if (count % 25 == 0)
+					data->map[data->img.y][data->img.x] = 'X';
+			}
+			data->img.x++;
+		}
+		data->img.y++;
+	}
+}
+
 void	ft_print_map(t_data *data)
 {
 	ft_print_wall(data);
@@ -57,11 +80,9 @@ void	ft_print_map(t_data *data)
 			else if (data->map[data->img.y][data->img.x] == 'E')
 				ft_put_object(data, 'E');
 			else if (data->map[data->img.y][data->img.x] == 'P')
-			{
-				data->pos.x = data->img.x;
-				data->pos.y = data->img.y;
 				ft_put_player2(data);
-			}
+			else if (data->map[data->img.y][data->img.x] == 'X')
+				ft_put_enemy(data);
 			data->img.x++;
 		}
 		data->img.y++;
@@ -70,7 +91,7 @@ void	ft_print_map(t_data *data)
 
 int	ft_render(t_data *data)
 {
-	if (data->content.win == 0)
+	if (data->content.win == 0 && data->content.lose == 0)
 	{
 		ft_print_map(data);
 		ft_print_movements(data);
