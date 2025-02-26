@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:26:51 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 18:29:06 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:30:22 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ int	main(int ac, char **av)
 			data.content.count_y * 64, "so_long");
 	if (!data.win_ptr)
 	{
+		ft_freemap(&data);
+		ft_destroy(&data);
+		mlx_destroy_display(data.mlx_ptr);
 		free(data.mlx_ptr);
 		return (MLX_ERROR);
 	}

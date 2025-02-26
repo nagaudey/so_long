@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 16:40:16 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:38:10 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**ft_get_map(int fd, t_data *data)
 	}
 	if (line_map)
 		free(line_map);
-	data->map = ft_split(buff, '\n');
+	data->map = ft_check_emptyline(data, buff);
 	free(buff);
 	return (data->map);
 }
@@ -129,16 +129,16 @@ char	**ft_check_map(char **str, t_data *data)
 	if (fd < 0)
 		return (end(data, "Error\nFailed to open file\n"));
 	data->map = ft_parse_map(fd, data);
+	if (ft_check_close(data) == 1)
+		return (end(data, "Error\nThe map must be close\n"));
+	if ((ft_check_characters(data)) == 1)
+		return (end(data, "Error\nThe characters in the map are incorrect\n"));
 	if (data->content.count_x * 64 > data->width || data->content.count_y
 		* 64 > data->height)
 		data->map = ft_cutmap(data);
 	if (data->content.error == 1)
 		return (end(data, "Error\nThe map must be Square or Rectangular\n"));
-	if ((ft_check_characters(data)) == 1)
-		return (end(data, "Error\nThe characters in the map are incorrect\n"));
 	if (ft_check_path(data) == 1)
 		return (end(data, "Error\nThe map cannot be finished\n"));
-	if (ft_check_close(data) == 1)
-		return (end(data, "Error\nThe map must be close\n"));
 	return (data->map);
 }
