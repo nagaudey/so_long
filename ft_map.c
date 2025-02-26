@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 21:33:33 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 22:14:52 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char	**ft_parse_map(int fd, t_data *data)
 			data->content.error = 1;
 		data->content.count_y++;
 	}
+	close(fd);
 	return (data->map);
 }
 
