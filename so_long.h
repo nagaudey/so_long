@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 20:08:40 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:33:53 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,11 @@ void			ft_set_img(t_data *data);
 void			ft_map_bonus_enemy(t_data *data);
 void			ft_destroy(t_data *data);
 char			**ft_check_emptyline(t_data *data, char *buff);
+void			ft_map_bonus2(t_data *data);
+void			ft_map_bonus3(t_data *data);
+void			ft_map_bonus4(t_data *data);
+void			ft_map_bonus5(t_data *data);
+void			ft_check_character2(t_data *data);
+int				ft_check_characters(t_data *data);
 
 #endif

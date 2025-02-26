@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:57:57 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 20:39:40 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:29:38 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,16 +108,16 @@ int	ft_check_path(t_data *data)
 	return (0);
 }
 
-char **ft_check_emptyline(t_data *data, char *buff)
+char	**ft_check_emptyline(t_data *data, char *buff)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (buff[i])
 	{
 		if (buff[i] == '\n' && buff[i + 1] == '\n')
 		{
-			end2(data,"Error\nEmpty line in the map\n", buff);
+			end2(data, "Error\nEmpty line in the map\n", buff);
 			ft_close2(data);
 		}
 		i++;

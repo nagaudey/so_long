@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 20:38:10 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:33:33 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char	**ft_parse_map(int fd, t_data *data)
 	data->content.count_y = 0;
 	ft_set_content(data);
 	data->content.count_m = 0;
+	mlx_get_screen_size(data->mlx_ptr, &data->width, &data->height);
 	data->map = ft_get_map(fd, data);
 	data->content.count_x = ft_strlen(data->map[data->content.count_y]);
 	while (data->map[data->content.count_y])
@@ -119,7 +120,6 @@ char	**ft_check_map(char **str, t_data *data)
 {
 	int	fd;
 
-	mlx_get_screen_size(data->mlx_ptr, &data->width, &data->height);
 	if (!str || !str[1])
 		return (end(data, "Error\nNo map file provided\n"));
 	data->map = NULL;
@@ -138,6 +138,8 @@ char	**ft_check_map(char **str, t_data *data)
 		data->map = ft_cutmap(data);
 	if (data->content.error == 1)
 		return (end(data, "Error\nThe map must be Square or Rectangular\n"));
+	ft_set_content(data);
+	ft_check_character2(data);
 	if (ft_check_path(data) == 1)
 		return (end(data, "Error\nThe map cannot be finished\n"));
 	return (data->map);

@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:13:38 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 12:33:59 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:27:49 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ void	ft_map_bonus(t_data *data)
 		}
 		data->img.y++;
 	}
+	ft_map_bonus2(data);
+	ft_map_bonus3(data);
+	ft_map_bonus4(data);
+	ft_map_bonus5(data);
 }
 
 void	ft_print_map(t_data *data)

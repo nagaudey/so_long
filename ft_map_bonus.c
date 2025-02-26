@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:22:06 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 12:32:15 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:34:52 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,11 @@ void	ft_map_bonus5(t_data *data)
 	}
 }
 
-void	ft_map_bonus_enemy(t_data *data)
+void	ft_check_character2(t_data *data)
 {
-	ft_map_bonus2(data);
-	ft_map_bonus3(data);
-	ft_map_bonus4(data);
-	ft_map_bonus5(data);
+	if ((ft_check_characters(data)) == 1)
+	{
+		end(data, "Error\nThe characters in the resize map are incorrect\n");
+		ft_close2(data);
+	}
 }
