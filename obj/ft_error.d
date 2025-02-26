@@ -1,7 +1,0 @@
-obj/ft_error.o: ft_error.c so_long.h libft/all.h minilibx-linux/mlx.h
-
-so_long.h:
-
-libft/all.h:
-
-minilibx-linux/mlx.h:

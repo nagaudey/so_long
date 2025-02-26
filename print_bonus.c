@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:06:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/25 19:51:03 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:41:43 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_print_wall_bonus(t_data *data)
 
 void	ft_win(t_data *data)
 {
+	data->content.frame++;
 	if (data->content.print == 0)
 	{
 		data->content.print = 1;
@@ -68,10 +69,13 @@ void	ft_win(t_data *data)
 		ft_printf("\033[0;32m\nCongratulations, you have won in: %d moves!\n\033[0m",
 			data->content.count_m + 1);
 	}
+	if (data->content.frame == 10000)
+		ft_close(data);
 }
 
 void	ft_lose(t_data *data)
 {
+	data->content.frame++;
 	if (data->content.print == 0)
 	{
 		data->content.print = 1;
@@ -90,5 +94,7 @@ void	ft_lose(t_data *data)
 			"\n\033[0m");
 		ft_printf("\033[1;31m\nYou have lost. Better luck next time!\n\033[0m");
 	}
+	if (data->content.frame == 10000)
+		ft_close(data);
 }
 
