@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 18:26:51 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 12:37:28 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:29:06 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	handle_keypress(int keysym, t_data *data)
 		ft_printf("Number of movements: %d\n", data->content.count_m);
 	return (0);
 }
+
 void	set_data(t_data *data)
 {
 	data->content.enemy = 0;
@@ -37,6 +38,7 @@ void	set_data(t_data *data)
 	data->content.frame = 0;
 	data->img.enemy_form = 'R';
 }
+
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -46,7 +48,7 @@ int	main(int ac, char **av)
 	if (!data.mlx_ptr)
 		return (MLX_ERROR);
 	data.map = ft_check_map(av, &data);
-	ft_set_img2(&data);
+	ft_set_enemy(&data);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, data.content.count_x * 64,
 			data.content.count_y * 64, "so_long");
 	if (!data.win_ptr)

@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 13:05:42 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:40:16 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,4 +142,3 @@ char	**ft_check_map(char **str, t_data *data)
 		return (end(data, "Error\nThe map must be close\n"));
 	return (data->map);
 }
-

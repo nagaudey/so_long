@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:57:57 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 12:52:40 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:38:05 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char	**ft_check_newmap(t_data *data)
 		x = 0;
 		while (data->map[data->content.count_y][x])
 		{
-			if (data->map[data->content.count_y][x] == 'C' || data->map[data->content.count_y][x] == 'E')
+			if (data->map[data->content.count_y][x] == 'C'
+				|| data->map[data->content.count_y][x] == 'E')
 				data->content.count_c++;
 			else if (data->map[data->content.count_y][x] == 'P')
 				data->content.count_p++;
@@ -83,26 +84,27 @@ char	**ft_check_newmap(t_data *data)
 // 	ft_check_valid(x, y + 1, data);
 // 	ft_check_valid(x, y - 1, data);
 // }
-void    ft_check_valid(int x, int y, t_data *data)
+void	ft_check_valid(int x, int y, t_data *data)
 {
 	data->content.count_l = 0;
-    if (x < 0 || y < 0 || x >= data->content.count_x || y >= data->content.count_y)
-        return ;
-    if (data->map_cpy[y][x] == '1' || data->map_cpy[y][x] == 'V' || data->map_cpy[y][x] == 'L'
-        || data->map_cpy[y][x] == 'E')
-		{
-			if (data->map_cpy[y][x] == 'E')
-				data->map_cpy[y][x] = 'L';
-        	return ;
-		}
-    if (data->map_cpy[y][x] == 'C')
-        data->map_cpy[y][x] = 'L';
-    else
-        data->map_cpy[y][x] = 'V';
-    ft_check_valid(x + 1, y, data);
-    ft_check_valid(x - 1, y, data);
-    ft_check_valid(x, y + 1, data);
-    ft_check_valid(x, y - 1, data);
+	if (x < 0 || y < 0 || x >= data->content.count_x
+		|| y >= data->content.count_y)
+		return ;
+	if (data->map_cpy[y][x] == '1' || data->map_cpy[y][x] == 'V'
+		|| data->map_cpy[y][x] == 'L' || data->map_cpy[y][x] == 'E')
+	{
+		if (data->map_cpy[y][x] == 'E')
+			data->map_cpy[y][x] = 'L';
+		return ;
+	}
+	if (data->map_cpy[y][x] == 'C')
+		data->map_cpy[y][x] = 'L';
+	else
+		data->map_cpy[y][x] = 'V';
+	ft_check_valid(x + 1, y, data);
+	ft_check_valid(x - 1, y, data);
+	ft_check_valid(x, y + 1, data);
+	ft_check_valid(x, y - 1, data);
 }
 
 int	ft_check_path(t_data *data)
@@ -115,7 +117,7 @@ int	ft_check_path(t_data *data)
 	data->map_cpy = ft_clone_map(data);
 	ft_pos_player(data);
 	ft_check_valid(data->pos.x, data->pos.y, data);
-	while(data->map_cpy[++i])
+	while (data->map_cpy[++i])
 	{
 		j = -1;
 		while (data->map_cpy[i][++j])
@@ -123,7 +125,6 @@ int	ft_check_path(t_data *data)
 			if (data->map_cpy[i][j] == 'L')
 				data->content.count_l++;
 		}
-
 	}
 	ft_free2str(data->map_cpy);
 	if (data->content.count_c != data->content.count_l)

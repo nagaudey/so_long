@@ -6,13 +6,13 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:26:35 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/25 19:33:28 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:32:31 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_set_img3(t_data *data)
+void	ft_set_img3(t_data *data)
 {
 	int	img_height;
 	int	img_width;
@@ -27,8 +27,6 @@ void ft_set_img3(t_data *data)
 			"textures/flower3.xpm", &img_width, &img_height);
 	data->img.flower_4 = mlx_xpm_file_to_image(data->mlx_ptr,
 			"textures/flower4.xpm", &img_width, &img_height);
-	if (!data->img.flower_1 || !data->img.flower_2 || !data->img.flower_3 || !data->img.flower_4)
-		ft_destroy_images2(data);
 }
 
 void	ft_put_end(t_data *data, int end)

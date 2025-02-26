@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:36:23 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 11:44:54 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:04:00 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,18 @@ char	**ft_freemap(t_data *data)
 	data->map = NULL;
 	return (NULL);
 }
-void ft_destroy(t_data *data)
+
+void	ft_destroy(t_data *data)
 {
 	mlx_destroy_image(data->mlx_ptr, data->img.exit);
 	mlx_destroy_image(data->mlx_ptr, data->img.collect);
 	mlx_destroy_image(data->mlx_ptr, data->img.wall);
 	mlx_destroy_image(data->mlx_ptr, data->img.floor);
-	mlx_destroy_image(data->mlx_ptr, data->img.player_R);
-	mlx_destroy_image(data->mlx_ptr, data->img.player_L);
-	mlx_destroy_image(data->mlx_ptr, data->img.player_S);
-	mlx_destroy_image(data->mlx_ptr, data->img.player_D);
-	mlx_destroy_image(data->mlx_ptr, data->img.player_G);
+	mlx_destroy_image(data->mlx_ptr, data->img.player_r);
+	mlx_destroy_image(data->mlx_ptr, data->img.player_l);
+	mlx_destroy_image(data->mlx_ptr, data->img.player_s);
+	mlx_destroy_image(data->mlx_ptr, data->img.player_d);
+	mlx_destroy_image(data->mlx_ptr, data->img.player_g);
 	mlx_destroy_image(data->mlx_ptr, data->img.player_2);
 	mlx_destroy_image(data->mlx_ptr, data->img.player_1);
 	mlx_destroy_image(data->mlx_ptr, data->img.wall2);
@@ -68,6 +69,7 @@ void ft_destroy(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->img.capy_4);
 	mlx_destroy_image(data->mlx_ptr, data->img.capy_5);
 }
+
 int	ft_close(t_data *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);

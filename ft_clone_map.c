@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:52:30 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/23 21:27:57 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:38:40 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ char	**ft_clone_map(t_data *data)
 	new_map[y] = NULL;
 	return (new_map);
 }
-

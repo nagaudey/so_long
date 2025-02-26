@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 12:36:50 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:28:06 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef struct s_img
 	void		*wall;
 	void		*wall2;
 	void		*collect;
-	void		*player_R;
-	void		*player_L;
-	void		*player_S;
-	void		*player_D;
-	void		*player_G;
+	void		*player_r;
+	void		*player_l;
+	void		*player_s;
+	void		*player_d;
+	void		*player_g;
 	void		*player_1;
 	void		*player_2;
 	void		*capy_1;
@@ -56,11 +56,6 @@ typedef struct s_img
 
 typedef struct s_content
 {
-	char		exit;
-	char		player;
-	char		wall;
-	char		floor;
-	char		collect;
 	int			count_x;
 	int			count_y;
 	int			count_p;
@@ -129,6 +124,7 @@ void			ft_map_bonus(t_data *data);
 void			ft_put_enemy(t_data *data);
 void			ft_put_enemy2(t_data *data);
 void			ft_set_enemy(t_data *data);
+void			ft_set_img(t_data *data);
 void			ft_map_bonus_enemy(t_data *data);
 
 #endif
