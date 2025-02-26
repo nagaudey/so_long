@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/25 22:04:36 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:12:57 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ typedef struct s_img
 	void		*player_G;
 	void		*player_1;
 	void		*player_2;
-	void		*ennemy_L;
-	void		*ennemy_R;
+	void		*capy_1;
+	void		*capy_2;
+	void		*capy_3;
+	void		*capy_4;
+	void		*capy_5;
 	void		*flower_1;
 	void		*flower_2;
 	void		*flower_3;
@@ -118,9 +121,13 @@ void			ft_win(t_data *data);
 void			ft_lose(t_data *data);
 int				ft_check_collect(t_data *data);
 void			ft_set_img3(t_data *data);
+void			ft_destroy_images(t_data *data);
 void			ft_destroy_images2(t_data *data);
 void			ft_put_end(t_data *data, int end);
 void			ft_map_bonus(t_data *data);
 void			ft_put_enemy(t_data *data);
+void			ft_put_enemy2(t_data *data);
+void			ft_map_bonus2(t_data *data);
+void			ft_set_enemy(t_data *data);
 
 #endif

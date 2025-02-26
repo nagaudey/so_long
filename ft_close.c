@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 21:36:23 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/25 18:33:13 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 11:44:54 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,8 @@ char	**ft_freemap(t_data *data)
 	data->map = NULL;
 	return (NULL);
 }
-
-int	ft_close(t_data *data)
+void ft_destroy(t_data *data)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	ft_freemap(data);
 	mlx_destroy_image(data->mlx_ptr, data->img.exit);
 	mlx_destroy_image(data->mlx_ptr, data->img.collect);
 	mlx_destroy_image(data->mlx_ptr, data->img.wall);
@@ -61,12 +58,21 @@ int	ft_close(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->img.player_2);
 	mlx_destroy_image(data->mlx_ptr, data->img.player_1);
 	mlx_destroy_image(data->mlx_ptr, data->img.wall2);
-	mlx_destroy_image(data->mlx_ptr, data->img.ennemy_R);
-	mlx_destroy_image(data->mlx_ptr, data->img.ennemy_L);
 	mlx_destroy_image(data->mlx_ptr, data->img.flower_1);
 	mlx_destroy_image(data->mlx_ptr, data->img.flower_2);
 	mlx_destroy_image(data->mlx_ptr, data->img.flower_3);
 	mlx_destroy_image(data->mlx_ptr, data->img.flower_4);
+	mlx_destroy_image(data->mlx_ptr, data->img.capy_1);
+	mlx_destroy_image(data->mlx_ptr, data->img.capy_2);
+	mlx_destroy_image(data->mlx_ptr, data->img.capy_3);
+	mlx_destroy_image(data->mlx_ptr, data->img.capy_4);
+	mlx_destroy_image(data->mlx_ptr, data->img.capy_5);
+}
+int	ft_close(t_data *data)
+{
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	ft_freemap(data);
+	ft_destroy(data);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	exit(0);

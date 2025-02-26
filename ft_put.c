@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:09 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/25 22:09:25 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:02:01 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,3 @@ void	ft_put_object(t_data *data, char form)
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
 }
 
-void	ft_put_enemy(t_data *data)
-{
-	data->content.enemy++;
-	if (data->content.enemy % 2 == 0)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ennemy_L,
-			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ennemy_R,
-			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-}

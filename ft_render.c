@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:13:38 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/25 22:07:58 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:30:24 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,58 @@ void	ft_map_bonus(t_data *data)
 				if (count % 25 == 0)
 					data->map[data->img.y][data->img.x] = 'X';
 			}
+			data->img.x++;
+		}
+		data->img.y++;
+	}
+}
+
+void ft_map_bonus2(t_data *data)
+{
+	data->img.y = 1;
+	while (data->map[data->img.y + 1])
+	{
+		data->img.x = 1;
+		while (data->map[data->img.y][data->img.x + 1])
+		{
+			if (data->map[data->img.y][data->img.x] == 'E'
+				&& data->map[data->img.y + 1][data->img.x] == '0'
+				&& data->map[data->img.y - 1][data->img.x] == '0')
+				data->map[data->img.y + 1][data->img.x] = 'X';
+			else if (data->map[data->img.y][data->img.x] == 'E'
+				&& data->map[data->img.y - 1][data->img.x] == '0'
+				&& data->map[data->img.y + 1][data->img.x] == '0')
+				data->map[data->img.y - 1][data->img.x] = 'X';
+			else if (data->map[data->img.y][data->img.x] == 'E'
+				&& data->map[data->img.y][data->img.x + 1] == '0'
+				&& data->map[data->img.y][data->img.x - 1] == '0')
+				data->map[data->img.y][data->img.x + 1] = 'X';
+			data->img.x++;
+		}
+		data->img.y++;
+	}
+}
+
+void ft_map_bonus3(t_data *data)
+{
+	data->img.y = 1;
+	while (data->map[data->img.y + 1])
+	{
+		data->img.x = 1;
+		while (data->map[data->img.y][data->img.x + 1])
+		{
+			if (data->map[data->img.y][data->img.x] == 'E'
+				&& data->map[data->img.y][data->img.x - 1] == '0'
+				&& data->map[data->img.y][data->img.x - 1] == '0')
+				data->map[data->img.y][data->img.x] = 'X';
+			else if (data->map[data->img.y][data->img.x] == 'E'
+				&& data->map[data->img.y - 1][data->img.x] == '0'
+				&& data->map[data->img.y][data->img.x + 1] == '0')
+				data->map[data->img.y - 1][data->img.x] = 'X';
+			else if (data->map[data->img.y][data->img.x] == 'E'
+				&& data->map[data->img.y + 1][data->img.x] == '0'
+				&& data->map[data->img.y][data->img.x - 1] == '0')
+				data->map[data->img.y + 1][data->img.x] = 'X';
 			data->img.x++;
 		}
 		data->img.y++;
