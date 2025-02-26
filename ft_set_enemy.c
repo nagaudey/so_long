@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:30:13 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 18:32:13 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:49:50 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,24 @@ void	ft_set_enemy(t_data *data)
 void	ft_put_enemy(t_data *data)
 {
 	data->content.enemy++;
-	if (data->content.enemy > 1440)
+	if (data->content.enemy > 1440 * 2)
 		ft_put_enemy2(data);
-	if (data->content.enemy < 240)
+	if (data->content.enemy < 240 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_1,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 480 == 1)
+	else if (data->content.enemy < 480 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_2,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 720 == 1)
+	else if (data->content.enemy < 720 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_3,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 960)
+	else if (data->content.enemy < 960 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_4,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 1200)
+	else if (data->content.enemy < 1200 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_5,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 1440)
+	else if (data->content.enemy < 1440 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_4,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
 }
@@ -75,27 +75,27 @@ void	ft_put_enemy(t_data *data)
 void	ft_put_enemy2(t_data *data)
 {
 	data->content.enemy++;
-	if (data->content.enemy > 2880)
+	if (data->content.enemy > 2880 * 2)
 	{
 		data->content.enemy = 0;
 		ft_put_enemy(data);
 	}
-	if (data->content.enemy < 1680)
+	if (data->content.enemy < 1680 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_4,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 1920)
+	else if (data->content.enemy < 1920 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_5,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 2160)
+	else if (data->content.enemy < 2160 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_4,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 2400)
+	else if (data->content.enemy < 2400 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_3,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 2640)
+	else if (data->content.enemy < 2640 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_2,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
-	else if (data->content.enemy < 2880)
+	else if (data->content.enemy < 2880 * 2)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.capy_1,
 			data->img.x * IMG_WIDTH, data->img.y * IMG_HEIGHT);
 }
