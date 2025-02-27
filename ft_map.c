@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 22:14:52 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:54:19 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ char	**ft_parse_map(int fd, t_data *data)
 	data->content.count_m = 0;
 	mlx_get_screen_size(data->mlx_ptr, &data->width, &data->height);
 	data->map = ft_get_map(fd, data);
+	if (!data->map)
+		return (end3(data, fd));
 	data->content.count_x = ft_strlen(data->map[data->content.count_y]);
 	while (data->map[data->content.count_y])
 	{
@@ -99,6 +101,8 @@ int	ft_check_close(t_data *data)
 	int	y;
 
 	y = 0;
+	if (!data->map)
+		return (1);
 	while (data->map[y])
 	{
 		x = 0;

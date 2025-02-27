@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 21:45:50 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:08:53 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_content
 	int			print;
 	int			enemy;
 	int			frame;
+	int			flag;
 }				t_content;
 
 typedef struct s_position
@@ -133,5 +134,6 @@ void			ft_map_bonus4(t_data *data);
 void			ft_map_bonus5(t_data *data);
 void			ft_check_character2(t_data *data);
 int				ft_check_characters(t_data *data);
+void			*end3(t_data *data, int fd);
 
 #endif

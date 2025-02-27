@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 16:14:20 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/24 11:42:48 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:55:20 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	*end(t_data *data, char *str)
 {
-	write(2, str, ft_strlen(str));
+	if (data->content.flag == 0)
+		write(2, str, ft_strlen(str));
 	ft_close2(data);
-	return (0);
+	return (NULL);
 }
 
 void	*end2(t_data *data, char *str, char *buff)
@@ -36,5 +37,12 @@ void	*end2(t_data *data, char *str, char *buff)
 	}
 	write(2, str, ft_strlen(str));
 	free(buff);
-	return (0);
+	return (NULL);
+}
+
+void	*end3(t_data *data, int fd)
+{
+	data->content.flag = 1;
+	close(fd);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:06:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/26 21:44:18 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/02/27 11:57:18 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_win(t_data *data)
 			"                                                              \n"
 			"\n\033[0m");
 		ft_printf("\033[0;32m\nCongratulations, you have won in:"
-			"%d moves!\n\033[0m",
+			" %d moves!\n\033[0m",
 			data->content.count_m + 1);
 	}
 	if (data->content.frame == 10000)
