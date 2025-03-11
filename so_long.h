@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:05:50 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/27 12:08:53 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:46:08 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ void			ft_map_bonus5(t_data *data);
 void			ft_check_character2(t_data *data);
 int				ft_check_characters(t_data *data);
 void			*end3(t_data *data, int fd);
+void			*end4(t_data *data, char *str);
 
 #endif

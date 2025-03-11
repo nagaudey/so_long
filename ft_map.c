@@ -6,7 +6,7 @@
 /*   By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:00:52 by nagaudey          #+#    #+#             */
-/*   Updated: 2025/02/27 11:54:19 by nagaudey         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:44:04 by nagaudey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,9 @@ char	**ft_check_map(char **str, t_data *data)
 {
 	int	fd;
 
-	if (!str || !str[1])
-		return (end(data, "Error\nNo map file provided\n"));
 	data->map = NULL;
+	if (!str || !str[1])
+		return (end4(data, "Error\nNo map file provided\n"));
 	if (ft_strchr2(str[1], ".ber") == 0)
 		return (end(data, "Error\nNo correct format map founded\n"));
 	fd = open(str[1], O_RDONLY);
