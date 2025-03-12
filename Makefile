@@ -6,17 +6,19 @@
 #    By: nagaudey <nagaudey@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 18:18:42 by nagaudey          #+#    #+#              #
-#    Updated: 2025/03/12 00:45:03 by nagaudey         ###   ########.fr        #
+#    Updated: 2025/03/12 19:32:00 by nagaudey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CFLAGS = -Wall -Wextra -Werror -MMD -MP -g3 -fPIC
 LDFLAGS = -fPIE
-libft = ./libft
-minilibx = ./minilibx-linux
-mlx = $(minilibx)/libmlx_Linux.a
 CC = cc
+
+LIBFT_DIR = ./libft
+MINILIBX_DIR = ./minilibx-linux
+MLX = $(MINILIBX_DIR)/libmlx_Linux.a
+LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC = libft/get_next_line/get_next_line.c libft/ft_split.c libft/ft_strchr2.c ft_render.c \
 		end.c ft_set.c main.c ft_move.c ft_close.c ft_cutmap.c ft_check_path.c ft_clone_map.c \
@@ -26,35 +28,32 @@ OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
 DEPS = $(OBJ:.o=.d)
 
-all: $(OBJ_DIR) libft $(NAME)
+all: $(LIBFT) $(MLX) $(OBJ_DIR) $(NAME)
 
-$(OBJ_DIR)/%.o: %.c libft/libft.a minilibx-linux/libmlx_Linux.a so_long.h
+$(OBJ_DIR)/%.o: %.c so_long.h Makefile
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -o $@ -c $< -I$(libft) -I$(minilibx)
+	$(CC) $(CFLAGS) -o $@ -c $< -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 
--include $(DEPS)
-
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(OBJ) -L$(libft) -lft $(mlx) -L$(minilibx) -lXext -lX11 -lmlx
+$(NAME): $(OBJ) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(OBJ) -L$(LIBFT_DIR) -lft $(MLX) -L$(MINILIBX_DIR) -lXext -lX11 -lmlx
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-$(mlx):
-	make -C $(minilibx)
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR)
 
-libft:
-	make -C $(libft)
+$(MLX):
+	@$(MAKE) -C $(MINILIBX_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR)
-	make -C $(libft) clean
-	make -C $(minilibx) clean
+	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
-	make -C $(libft) fclean
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re
