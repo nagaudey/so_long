@@ -1,53 +1,107 @@
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 AR = ar rcs
 RM = rm -rf
 
-HEADERS = all.h
 OBJ_DIR = obj
 
+GREEN=\033[0;32m
+BLUE=\033[38;2;64;224;208m
+RED=\033[0;91m
+WHITE=\033[2;37m
+NC=\033[0m
+
+DARK_YELLOW=\033[2;33m
+YELLOW=\033[38;5;178m
+DARK_GREEN=\033[38;5;22m
+DARK_RED=\033[38;5;124m
+BLACK=\033[0;30m
+INV=\033[7m
+FLASH=\033[5m
+
 LIBFT_FILES = ft_atoi.c ft_isalnum.c ft_isdigit.c ft_memcmp.c ft_memset.c ft_strlcat.c ft_strncmp.c \
- ft_tolower.c ft_bzero.c ft_isalpha.c ft_isprint.c ft_memcpy.c ft_strchr.c ft_strlcpy.c \
+ ft_tolower.c ft_bzero.c ft_isalpha.c ft_isprint.c ft_memcpy.c ft_strchr.c ft_strchr2.c ft_strlcpy.c \
  ft_strnstr.c ft_toupper.c ft_calloc.c ft_isascii.c ft_memchr.c ft_memmove.c ft_strdup.c \
  ft_strlen.c ft_strrchr.c ft_itoa.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_strmapi.c ft_striteri.c \
  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c
 
 PRINTF_FILES = ft_printf/ft_len_putaddress.c ft_printf/ft_len_putchar.c ft_printf/ft_len_putnbr_hex.c \
- ft_printf/ft_len_putnbr.c ft_printf/ft_len_putstr.c ft_printf/ft_len_uputnbr.c ft_printf/ft_printf.c ft_printf/ft_iterative_count.c
+	ft_printf/ft_len_putnbr.c ft_printf/ft_len_putstr.c ft_printf/ft_len_uputnbr.c ft_printf/ft_printf.c ft_printf/ft_iterative_count.c \
 
-GNL_FILES = get_next_line/get_next_line.c get_next_line/get_next_line_bonus.c \
+
+GNL_FILES = get_next_line/get_next_line.c get_next_line/get_next_line_bonus.c
 
 LIBFT_BONUS_FILES = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstiter_bonus.c \
  ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstadd_back_bonus.c ft_lstmap_bonus.c
 
-SRC_FILES = $(LIBFT_FILES) $(PRINTF_FILES) $(GNL_FILES)
-BONUS_SRC_FILES = $(SRC_FILES) $(LIBFT_BONUS_FILES)
+SRC_FILES = $(LIBFT_FILES) $(PRINTF_FILES) $(GNL_FILES) $(LIBFT_BONUS_FILES)
 
-OBJ_FILES = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
-BONUS_OBJ_FILES = $(patsubst %.c,$(OBJ_DIR)/%.o,$(BONUS_SRC_FILES))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:%.c=%.o))
+DEPS = $(OBJ:.o=.d)
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
-$(NAME): $(OBJ_FILES)
-	$(AR) $@ $^
+	@echo "$(BLUE)	             xxxxx"
+	@echo "                  xXXXXXXXXXx"
+	@echo "                 XXXXXXXXXXXXX"
+	@echo "                xXXXXXXXX  XXXx"
+	@echo "                XXXXXXXXX $(YELLOW)$(FLASH)0$(NC)$(BLUE)XXXX$(YELLOW)___$(NC)$(BLUE)"
+	@echo "               xXXXXXXXXXxxXXXX$(YELLOW)____\\   $(GREEN) LIBFT COMPILED!🎉$(NC)$(BLUE)	"
+	@echo "               XXXXXXXXXXXXXXXX$(YELLOW)____/$(NC)$(BLUE)"
+	@echo "               XXXXXXXXXXXXXXXXX"
+	@echo "               XXXXX|\XXX/|XXXXX"
+	@echo "               XXXXX| \-/ |XXXXX"
+	@echo "              xXXXXX| $(RED)[ ]$(NC)$(BLUE) |XXXXXx"
+	@echo "            xXXXX   | /-\ |   XXXXx"
+	@echo "         xXXXXX     |/   \|     XXXXXx"
+	@echo "       xXXXXXX                   XXXXXXx"
+	@echo "      xXXXXXXX                   XXXXXXXx"
+	@echo "     xXXXXXXXX                   XXXXXXXXx"
+	@echo "    xXXXXXXXXX                   XXXXXXXXXx"
+	@echo "   xXXXXXXXXXX                   XXXXXXXXXXx"
+	@echo "  xXXXXXXXXXXX                   XXXXXXXXXXXx"
+	@echo " xXXXXXXXX XXX                   XXX XXXXXXXXx"
+	@echo " XXXXXXXX  XXX                   XXX  XXXXXXXX"
+	@echo "xXXXXXXX   XXX  $(GREEN)   ✨CUB3D✨   $(BLUE)  XXX   XXXXXXXx"
+	@echo "XXXXXX     XXX                   XXX     XXXXXX"
+	@echo "XXXX       XXX                   XXX       XXXX"
+	@echo " XX        XXX                   XXX        XX"
+	@echo "           XXX                   XXX"
+	@echo "           XXX                   XXX"
+	@echo "           XXX                   XXX"
+	@echo "           XXX                   XXX"
+	@echo "           XXXx                 xXXX"
+	@echo "           XXXXXXXXXXXXXXXXXXXXXXXXX"
+	@echo "           XXXXXXX           XXXXXXX"
+	@echo "       $(YELLOW)____$(BLUE)XXXXXX             XXXXXX$(YELLOW)____"
+	@echo "      /________/               \________\\ $(NC)"
 
-bonus: $(BONUS_OBJ_FILES)
-	$(AR) $(NAME) $^
+$(NAME): $(OBJ)
+	@printf "\r\033[K$(BLUE)⚙$(NC) Archiving libft $(NC)\r"
+	@$(AR) $(NAME) $(OBJ)
+	@printf "$(DARK_GREEN)✓ libft created! $(NC)\n"
+
+$(OBJ_DIR)/%.o: %.c Makefile
+	@mkdir -p $(dir $@)
+	@printf "$(BLUE)⚙$(NC)  Compiling $(BLUE)%-50s$(NC)\r" "$<"
+	@$(CC) $(CFLAGS) -MMD -MP -o $@ -c $<
+
+
+-include $(DEPS)
 
 $(OBJ_DIR):
-	mkdir -p $@
-
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	$(RM) $(OBJ_DIR)
+	@echo "$(DARK_RED)🗑  Cleaning libft objects...$(NC)"
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "$(DARK_RED)🗑  Removing libft.a...$(NC)"
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
+
